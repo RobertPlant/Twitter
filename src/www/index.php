@@ -11,7 +11,6 @@ if ($url[1] != '')
 	$route = 'index';
 }
 $route .= 'Action';
-var_dump($_SESSION);
 $db = new PDO('mysql:host=localhost;dbname=' . $config['db']['dbname'], 
     $config['db']['username'], $config['db']['password']);
 

@@ -20,20 +20,21 @@ class DefaultController {
 			":password" => password_hash($post['password'], PASSWORD_BCRYPT)
 		));
 		header( 'Location: /' ) ;	
-}
+	}
 
 	public function loginAction($db, $post) {
 		$db->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);	
-		$sql = 'select * from users where user = :username AND password = :password';
+		$sql = 'select * from users where username = :username';
 		$stmt = $db->prepare($sql);
 		$stmt->execute(array(
-            ":username" => $post['username'],
-            ":password" => password_hash($post['password'], PASSWORD_BCRYPT)
+            ":username" => $post['username']
 		));
-		if ($stmt->fetch() != false) {
-			$_SESSION['user'] = $stmt->fetch();
+		$row = $stmt->fetch();
+		var_dump($row, $post);
+		
+		if (password_verify($post['password'], $row['password'])) {
+			$_SESSION['user'] = $row;
 		}
-	
 		header( 'Location: /' ) ;
 	}
 }
