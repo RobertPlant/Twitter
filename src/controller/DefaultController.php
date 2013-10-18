@@ -7,8 +7,7 @@ class DefaultController {
      }
 
 	public function signupAction($db, $post) {
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-		$sql = "insert into users VALUES (:firstName, :lastName, :username, :password)";
+		$sql = "insert into users (firstName, lastName, username, password) VALUES (:firstName, :lastName, :username, :password)";
 		$stmt = $db->prepare($sql);
 		$stmt->execute(array(
 			":firstName" => $post['firstName'],
@@ -16,7 +15,7 @@ class DefaultController {
 			":username" => $post['username'],
 			":password" => password_hash($post['password'], PASSWORD_BCRYPT)
 		));
-		echo true;
+		return true;
 	}
 
 	public function loginAction($db, $post) {
