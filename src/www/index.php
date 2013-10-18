@@ -15,4 +15,4 @@ $db = new PDO('mysql:host=localhost;dbname=twitter', 'root', 'lornajane');
 // check the URL for where to route to
 // if empty, go to default controller
 $controller = new DefaultController();
-$controller->$route($db);
+$controller->$route($db, $_POST);
