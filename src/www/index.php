@@ -13,7 +13,7 @@ if ($url[1] != '')
 $route .= 'Action';
 
 $db = new PDO('mysql:host=localhost;dbname=' . $config['db']['dbname'], 
-    $config['db']['username'], $config['db']['username']);
+    $config['db']['username'], $config['db']['password']);
 
 // check the URL for where to route to
 // if empty, go to default controller
