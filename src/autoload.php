@@ -1,6 +1,8 @@
 <?php
 spl_autoload_register(function ($classname) {
 
+    require 'view/homepage.php';
+
     if (preg_match('/[a-zA-Z]+Controller$/', $classname)) {
         include __DIR__ . '/controller/' . $classname . '.php';
         return true;
