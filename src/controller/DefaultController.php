@@ -34,8 +34,6 @@ class DefaultController {
             ":username" => $post['username']
 		));
 		$row = $stmt->fetch();
-		var_dump($row, $post);
-		
 		if (password_verify($post['password'], $row['password'])) {
 			$_SESSION['user'] = $row;
 		}
