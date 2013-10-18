@@ -1,6 +1,6 @@
 <html>
 <body>
-<form>
+<form action="login" method="POST"> 
 <h1>TWITTER REGISTRATION</h1>
 Fill in below to register for twitter:<br>
 Username: <input type="text" name="user_name"><br>

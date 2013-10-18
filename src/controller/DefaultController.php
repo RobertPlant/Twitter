@@ -18,8 +18,8 @@ class DefaultController {
 			":username" => $post['username'],
 			":password" => password_hash($post['password'], PASSWORD_BCRYPT)
 		));
-		return true;
-	}
+		header( 'Location: /' ) ;	
+}
 
 	public function loginAction($db, $post) {
 		$sql = 'select * from users where user = :username AND password = :password';
@@ -28,7 +28,10 @@ class DefaultController {
             ":username" => $post['username'],
             ":password" => password_hash($post['password'], PASSWORD_BCRYPT)
 		));
-		if ($stmt->fetch() != false) { return true; } 
-		return false;
+		if ($stmt->fetch() != false) {
+			$_SESSION['user'] = $stmt->fetch();
+		}
+	
+		header( 'Location: /' ) ;
 	}
 }
