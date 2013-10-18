@@ -9,6 +9,10 @@ class DefaultController {
 		require '../view/registration.php';
 	}
 
+	public function newsFeedAction() {
+		require '../view/newsfeed.php';
+	}
+
 	public function signupAction($db, $post) {
 		$db->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);	
 		$sql = "insert into users (firstName, lastName, username, password) VALUES (:firstName, :lastName, :username, :password)";
@@ -34,6 +38,6 @@ class DefaultController {
 			$_SESSION['user'] = $stmt->fetch();
 		}
 	
-		header( 'Location: /' ) ;
+		$this->newsFeedAction();
 	}
 }
