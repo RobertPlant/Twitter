@@ -9,6 +9,10 @@ class DefaultController {
 		require '../view/registration.php';
 	}
 
+	public function newsFeedAction() {
+		require '../view/newsfeed.php';
+	}
+
 	public function signupAction($db, $post) {
 		$db->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);	
 		$sql = "insert into users (firstName, lastName, username, password) VALUES (:firstName, :lastName, :username, :password)";
@@ -35,6 +39,6 @@ class DefaultController {
 		if (password_verify($post['password'], $row['password'])) {
 			$_SESSION['user'] = $row;
 		}
-		header( 'Location: /' ) ;
+		$this->newsFeedAction();
 	}
 }
