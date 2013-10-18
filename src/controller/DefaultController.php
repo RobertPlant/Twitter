@@ -1,9 +1,12 @@
 <?php
 
 class DefaultController {
-     public function indexAction() {
-        require '../view/homepage.php';
-     }
+	public function indexAction() {
+		if ($_SESSION['user'] != null) {
+			header(':Location newsFeed');	
+		}         
+		require '../view/homepage.php';
+    }
 	
 	public function registerAction() {
 		require '../view/registration.php';
@@ -40,11 +43,9 @@ class DefaultController {
             ":username" => $post['username']
 		));
 		$row = $stmt->fetch();
-		var_dump($row, $post);
-		
 		if (password_verify($post['password'], $row['password'])) {
 			$_SESSION['user'] = $row;
+			header('Location: /newsFeed');
 		}
-		$this->newsFeedAction();
 	}
 }
