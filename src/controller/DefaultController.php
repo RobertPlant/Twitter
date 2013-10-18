@@ -1,9 +1,12 @@
 <?php
 
 class DefaultController {
-     public function indexAction() {
-        require '../view/homepage.php';
-     }
+	public function indexAction() {
+		if ($_SESSION['user'] != null) {
+			header(':Location newsFeed');	
+		}         
+		require '../view/homepage.php';
+    }
 	
 	public function registerAction() {
 		require '../view/registration.php';
