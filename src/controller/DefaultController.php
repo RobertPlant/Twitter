@@ -36,7 +36,7 @@ class DefaultController {
 		$row = $stmt->fetch();
 		if (password_verify($post['password'], $row['password'])) {
 			$_SESSION['user'] = $row;
+			header('Location: /newsFeed');
 		}
-		$this->newsFeedAction();
 	}
 }
