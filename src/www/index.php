@@ -18,4 +18,4 @@ $db = new PDO('mysql:host=localhost;dbname=' . $config['db']['dbname'],
 // check the URL for where to route to
 // if empty, go to default controller
 $controller = new DefaultController();
-$controller->$route($db, $_REQUEST);
+$controller->$route($db, $_POST);

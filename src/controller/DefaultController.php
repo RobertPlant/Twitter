@@ -19,7 +19,7 @@ class DefaultController {
 			":username" => $post['username'],
 			":password" => password_hash($post['password'], PASSWORD_BCRYPT)
 		));
-		//header( 'Location: /' ) ;	
+		header( 'Location: /' ) ;	
 }
 
 	public function loginAction($db, $post) {
