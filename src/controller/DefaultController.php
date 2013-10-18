@@ -12,7 +12,13 @@ class DefaultController {
 	public function newsFeedAction() {
 		require '../view/newsfeed.php';
 	}
-
+	
+	public function createMessageAction(){
+		require '../view/createmessage.php';
+	}
+	public function tweetAction($post){
+		
+	}
 	public function signupAction($db, $post) {
 		$db->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);	
 		$sql = "insert into users (firstName, lastName, username, password) VALUES (:firstName, :lastName, :username, :password)";
