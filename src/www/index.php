@@ -10,7 +10,7 @@ if ($_SERVER['REDIRECT_URL'] != '/')
 }
 $route .= 'Action';
 
-$db = new PDO('mysql:host=localhost;dbname=tweet', 'root', 'lornajane');
+$db = new PDO('mysql:host=localhost;dbname=twitter', 'root', 'lornajane');
 
 // check the URL for where to route to
 // if empty, go to default controller
