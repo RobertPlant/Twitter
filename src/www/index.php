@@ -1,11 +1,12 @@
 <?php
+include '../../vendor/autoload.php';
 include '../autoload.php';
 include '../config.php';
 session_start();
-
-if ($_SERVER['REDIRECT_URL'] != '/') 
+$url = explode('/', $_SERVER['REDIRECT_URL']);
+if ($url[1] != '') 
 {
-	$route = $_SERVER['REDIRECT_URL'];
+	$route = $url[1];
 } else {
 	$route = 'index';
 }
@@ -17,4 +18,4 @@ $db = new PDO('mysql:host=localhost;dbname=' . $config['db']['dbname'],
 // check the URL for where to route to
 // if empty, go to default controller
 $controller = new DefaultController();
-$controller->$route($db);
+$controller->$route($db, $_GET);
