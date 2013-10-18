@@ -11,11 +11,11 @@ if ($url[1] != '')
 	$route = 'index';
 }
 $route .= 'Action';
-
+var_dump($_SESSION);
 $db = new PDO('mysql:host=localhost;dbname=' . $config['db']['dbname'], 
     $config['db']['username'], $config['db']['password']);
 
 // check the URL for where to route to
 // if empty, go to default controller
 $controller = new DefaultController();
-$controller->$route($db, $_GET);
+$controller->$route($db, $_REQUEST);
