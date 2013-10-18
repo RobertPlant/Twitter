@@ -1,6 +1,0 @@
-<?php
-
-$config['db']['dbname'] = "twitter";
-$config['db']['username'] = "root";
-$config['db']['password'] = "lornajane";
-
