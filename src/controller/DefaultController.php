@@ -2,9 +2,12 @@
 
 class DefaultController {
      public function indexAction() {
-         //echo "hello world";
-         
+        require '../view/homepage.php';
      }
+	
+	public function registerAction() {
+		require '../view/registration.php';
+	}
 
 	public function signupAction($db, $post) {
 		$sql = "insert into users (firstName, lastName, username, password) VALUES (:firstName, :lastName, :username, :password)";
