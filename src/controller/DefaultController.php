@@ -13,8 +13,8 @@ class DefaultController {
 			":firstName" => $post['firstName'],
 			":lastName" => $post['lastName'],
 			":username" => $post['username'],
-			":password" => $post['password']
-		);
+			":password" => password_hash($post['password'], PASSWORD_BCRYPT)
+		));
 
 	}
 }

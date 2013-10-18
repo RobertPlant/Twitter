@@ -1,10 +1,11 @@
 <?php
 include '../autoload.php';
+include '../../vendor/autoload.php';
 session_start();
-
-if ($_SERVER['REDIRECT_URL'] != '/') 
+$url = explode('/', $_SERVER['REDIRECT_URL']);
+if ($url[1] != '') 
 {
-	$route = $_SERVER['REDIRECT_URL'];
+	$route = $url[1];
 } else {
 	$route = 'index';
 }
