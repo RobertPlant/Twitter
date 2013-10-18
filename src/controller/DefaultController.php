@@ -11,7 +11,7 @@ class DefaultController {
 
 	public function signupAction($db, $post) {
 		$db->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);	
-	$sql = "insert into users (firstName, lastName, username, password) VALUES (:firstName, :lastName, :username, :password)";
+		$sql = "insert into users (firstName, lastName, username, password) VALUES (:firstName, :lastName, :username, :password)";
 		$stmt = $db->prepare($sql);
 		$stmt->execute(array(
 			":firstName" => $post['firstName'],
@@ -23,6 +23,7 @@ class DefaultController {
 }
 
 	public function loginAction($db, $post) {
+		$db->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);	
 		$sql = 'select * from users where user = :username AND password = :password';
 		$stmt = $db->prepare($sql);
 		$stmt->execute(array(
